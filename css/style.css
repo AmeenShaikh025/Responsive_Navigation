@@ -1,0 +1,186 @@
+/* colors -> https://coolors.co/e54b4b-ebebd3-464655-e4b363-e8e9eb */
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+body {
+  background: #F0F8EA;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  background: #E54B4B;
+  color: #EBEBD3;
+  padding: 1em 0;
+  position: relative;
+}
+
+header::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+.logo {
+  float: left;
+  font-size: 1rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.logo span {
+  font-weight: 400;
+}
+
+.site-nav {
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  background: #464655;
+/*  height: 0px;
+  overflow: hidden;*/
+
+  /*code foe clip-path to make it circle*/
+  clip-path: circle(0px at top right);
+  transition: clip-path ease-in-out 800ms;
+}  
+
+.site-nav--open{
+  /*height: auto;*/
+
+  /*code foe clip-path to make it circle*/
+  clip-path: circle(150% at top right);
+}
+
+.site-nav ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav li{
+  border-bottom: 1px solid #575766;
+}
+
+.site-nav li:last-child{ /*selects last li element*/
+  border-bottom: none;
+}
+
+.site-nav a{
+  color: #EBEBD3;
+  display: block;
+  padding: 2em 4em 2em 1.5em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus{
+  background: #E4B363;
+  color: #464655;
+}
+
+/*styling the icon*/
+.site-nav--icon{
+  display: inline-block;
+  font-size: 1.5em;
+  margin-right: 1em;
+
+  width: 1.1em;/*for aligning the contents in one line*/
+  text-align: right;
+  color: rgba(255,255,255,.40);/*to make icons more subtle*/
+}
+
+.menu-toggle{
+  padding: 1em;
+  position: absolute;
+  top: .5em;
+  right: .5em;
+  cursor: pointer; /*when we hover it looks like somthing we can clik on*/
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after{
+  content: '';
+  display: block;
+  background: #EBEBD3;
+  height: 3px;
+  width: 1.75em;
+  border-radius: 3px;
+  transition: all ease-in-out 500ms;
+}
+
+
+.hamburger:before{
+  transform: translateY(-6px);/*to move on Y-axis*/
+}
+
+.hamburger:after{
+  transform: translateY(3px);/*to move on Y-axis*/
+}
+
+/*code for cancel mark(x) begins*/
+.open .hamburger{
+  transform: rotate(45deg);/*to rotate menu-toggle(3-lines)*/
+}
+
+/*we need 2 line so, we remove one out of 3 lines*/
+.open .hamburger::before{
+  opacity: 0;
+}
+
+.open .hamburger::after{
+  /*to make cross mark rotate the last line*/
+  transform:translateY(-3px) rotate(-90deg); /*with transform we write multiple value like translate and rotate at once*/
+}
+
+/*after 700px hamburger menu will covert to menu on the top*/
+@media (min-width: 700px){
+  .menu-toggle{
+    display: none;
+  }
+
+  .site-nav{
+    height: auto;/*after 700px it displays all the content*/
+    position: relative;
+    background: transparent;
+    float: right;
+    clip-path: initial;/*resetting clipping path*/
+  }
+
+  .site-nav li{
+    display: inline-block;
+    border:none;
+  }
+
+  .site-nav a{
+    padding: 0;
+    /*margin-left: 0em;*/   
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus{
+    background: transparent;
+  }
+
+  .site-nav--icon{
+    display: none;
+  }
+}
+
+  @media (min-width: 1440px){
+    h1{
+      float: left;
+    }
+
+    .container{
+        margin-left: 32px;
+    }
+  }
